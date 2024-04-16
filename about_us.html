@@ -1,0 +1,222 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>About Us</title>
+    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css">
+    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/font-awesome/4.7.0/css/font-awesome.min.css">
+    <link href="https://fonts.googleapis.com/css?family=Poppins:300,400,500,600,700,800,900" rel="stylesheet">
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/sweetalert2@11.1.2/dist/sweetalert2.min.css">
+    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/font-awesome/4.7.0/css/font-awesome.min.css">
+    <link rel="stylesheet" href="css/style.css">
+	<link rel="shortcut icon" href="images/favicon.png" type="image/x-icon">
+    <style>
+        body {
+            font-family: 'Poppins', sans-serif;
+            background-color: #f8f9fa;
+            color: #333;
+        }
+
+        .container {
+            max-width: 800px;
+            margin: 0 auto;
+            padding: 20px;
+            background-color: #fff;
+            border-radius: 8px;
+            box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+        }
+
+        h1,
+        h2 {
+            margin-top: 0;
+        }
+
+        p {
+            line-height: 1.6;
+        }
+
+        .fa-info-circle {
+            margin-right: 5px;
+        }
+
+        .btn-primary {
+            background-color: #007bff;
+            border-color: #007bff;
+        }
+
+        .btn-primary:hover {
+            background-color: #0056b3;
+            border-color: #0056b3;
+        }
+
+        .btn-primary:focus {
+            box-shadow: 0 0 0 0.2rem rgba(0, 123, 255, 0.5);
+        }
+        .card {
+            border: none;
+            border-radius: 10px;
+            box-shadow: 0 0 10px rgba(0, 0, 0, 0.1); /* 3D shadow effect */
+            transition: box-shadow 0.3s ease; /* Smooth transition */
+        }
+
+        .card:hover {
+            box-shadow: 0 0 20px rgba(0, 0, 0, 0.2); /* Increase shadow on hover */
+        }
+
+        .card-body {
+            padding: 20px;
+        }
+
+        .card-title {
+            font-size: 1.25rem;
+            font-weight: bold;
+            margin-bottom: 10px;
+        }
+
+        .card-text {
+            font-size: 1rem;
+            color: #666;
+        }
+        #sidebar {
+            width: 100px; /* Set the sidebar width to 100px */
+            height: 800px; /* Set the sidebar height to 800px */
+            background-color: #3e64ff;; /* Sample background color */
+            color: #fff;
+            transition: all 0.3s;
+        }
+
+        @media (max-width: 768px) {
+            #sidebar {
+                width: 0; /* Set the width to 0 on smaller screens */
+            }
+        }
+
+    </style>
+</head>
+
+<body>
+    <div class="wrapper d-flex align-items-stretch">
+        <nav id="sidebar" class="active">
+            <h1>
+                <a href="index.html" class="logo">
+                    <img src="images/logo.png" alt="Logo" class="img-fluid">
+                </a>
+            </h1>
+            <ul class="list-unstyled components mb-5">
+                <li class="active">
+                    <a href="index.html"><span class="fa fa-home"></span> Dashboard</a>
+                </li>
+                <li>
+                    <a href="transaction.html"><span class="fa fa-exchange"></span> Add transactions</a>
+                </li>
+                <li>
+                    <a href="history.html"><span class="fa fa-sticky-note"></span> Transaction history</a>
+                </li>
+                <li>
+                    <a href="contact_us.html"><span class="fa fa-envelope"></span> Contact US</a>
+                </li>
+                <li>
+                    <a href="about_us.html"><span class="fa fa-info-circle"></span> About Us</a>
+                </li>
+            </ul>            
+            <div class="footer">
+                <p>
+                    Copyright &copy;
+                    <script>document.write(new Date().getFullYear());</script> All rights reserved
+                </p>
+            </div>
+        </nav>
+        <div class="container mt-5">
+            <div class="text-center mb-4">
+                <h1>About Us</h1>
+                <p class="lead">Learn more about our team and our mission.</p>
+            </div>
+            <div class="row">
+                <div class="col-md-6">
+                    <h2>Our Mission</h2>
+                    <p>We are committed to providing the best task management solution for individuals and businesses.
+                        Our goal is to streamline your workflow and increase productivity.</p>
+                </div>
+                <div class="col-md-6">
+                    <h2>Meet the Developer</h2>
+                    <div class="card">
+                        <div class="card-body">
+                            <h5 class="card-title">Neelam Nagrale</h5>
+                            <p class="card-text">Developer & Founder</p>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            <div class="text-center mt-4">
+                <a href="index.html" class="btn btn-primary"><i class="fa fa-arrow-left"></i> Back to Dashboard</a>
+            </div>
+        </div>
+    </div>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/Chart.js/4.2.1/chart.min.js"></script>
+    <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
+
+    <script src="js/jquery.min.js"></script>
+    <script src="js/popper.js"></script>
+    <script src="js/bootstrap.min.js"></script>
+    <script src="js/main.js"></script>
+    <script src="https://cdn.jsdelivr.net/npm/sweetalert2@11.1.2/dist/sweetalert2.all.min.js"></script>
+    <script>
+        function render() {
+            var transactions = JSON.parse(localStorage.getItem("transactions"));
+            var table = document.getElementById("911");
+
+            transactions.forEach(function (transaction) {
+                var createtr = document.createElement("tr");
+
+                var createtd = document.createElement("td");
+                var createtd2 = document.createElement("td"); // Fixed variable name
+                var createtd3 = document.createElement("td");
+                var createtd4 = document.createElement("td");
+
+                var createp = document.createElement("td");
+                var createp2 = document.createElement("td");
+                var createp3 = document.createElement("td");
+                var createp4 = document.createElement("td");
+
+                createtd.appendChild(createp);
+                createtd2.appendChild(createp2);
+                createtd3.appendChild(createp3);
+                createtd4.appendChild(createp4);
+
+                createp.innerHTML = transaction.name;
+                createp2.innerHTML = transaction.date;
+                createp3.innerHTML = '&#8377;  ' + transaction.amount;
+
+
+                if (transaction.type == "expense") {
+                    createp4.innerHTML = '<svg class="status" width="16" height="16" viewBox="0 0 16 16" fill="none" xmlns="http://www.w3.org/2000/svg"><rect width="16" height="16" rx="8" fill="#DB2719" fill-opacity="0.3"/><circle cx="8" cy="8" r="4" fill="#DB2719"/></svg>' + transaction.type;
+                }
+                else {
+                    createp4.innerHTML = '<svg class="status" width="16" height="16" viewBox="0 0 16 16" fill="none" xmlns="http://www.w3.org/2000/svg"><rect width="16" height="16" rx="8" fill="#DBA32A" fill-opacity="0.14"/><circle cx="8" cy="8" r="4" fill="#7FB519"/></svg>' + transaction.type;
+                }
+                createtd.appendChild(createp);
+                createtd2.appendChild(createp2);
+                createtd3.appendChild(createp3);
+                createtd4.appendChild(createp4);
+
+                createtr.appendChild(createtd);
+                createtr.appendChild(createtd2);
+                createtr.appendChild(createtd3);
+                createtr.appendChild(createtd4);
+
+                table.appendChild(createtr);
+            });
+        }
+        render();
+    </script>
+    <script>
+        var name = localStorage.getItem("name");
+        if (name != null) {
+            document.getElementById("greeting").innerHTML = "Hi, " + name;
+        }
+    </script>
+</body>
+
+</html>
